@@ -127,8 +127,15 @@ int Lista::insertar(int elemento){
 
     //el primer caso es cuando el elemento es menor al primer elemento, lo cual implica que aun no esta en la lista
     if(elemento<temporal.el_valor) {
-        Lista nuevaLista();
-       // nuevoLista
+        Lista *nuevaLista = new Lista();
+        (*nuevaLista).su_frecuencia = 1;
+        (*nuevaLista).el_valor = elemento;
+        *(*nuevaLista).siguienteLista = *this;
+        *this = *nuevaLista;
+        posicionado = 1;
+        //delete nuevaLista;
+    } else {
+        
     }
 
 
