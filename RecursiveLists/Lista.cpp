@@ -11,7 +11,7 @@ Lista::Lista(){
 
 //metodo constructor por copia
 //como la lista es recursiva, entonces el mismo constructor es recursivo
-Lista::Lista(const Lista& otra) {
+Lista::Lista(Lista& otra) {
     el_valor = otra.el_valor;
     su_frecuencia = otra.su_frecuencia;
     if(!(otra==*otra.siguienteLista)) {
@@ -27,6 +27,14 @@ Lista::Lista(int a, int b[]) {
 
 }
 
+//metodo destructor de la Lista
+//hace delete a cada elemento de manera recursiva
+Lista::~Lista() {
+    if(!(*this==*siguienteLista)) { //caso base de la recursividad para que no se encicla el programa
+        delete siguienteLista;
+    }
+}
+
 //metodo isEmpty que permite saber si la lista es vacia o no
 int Lista::isEmpty() {
     int empty = 0;
@@ -38,7 +46,7 @@ int Lista::isEmpty() {
 
 //metodo de sobrecarga del operator =
 //permite asignar a una lista el contenido de otra lista
-Lista& Lista::operator = (const Lista& otra) {
+Lista& Lista::operator = (Lista& otra) {
     el_valor = otra.el_valor;
     su_frecuencia = otra.su_frecuencia;
     if(!(otra==*otra.siguienteLista)) { //solo se ejecuta en el caso que no sea el 
@@ -51,7 +59,26 @@ Lista& Lista::operator = (const Lista& otra) {
 
 //metodo de sobrecarga del operator ==
 //permite verificar si una lista es igual a otra lista
-int Lista::operator == (const Lista& otra) {
-    
+int Lista::operator == (const Lista& otra){
+    return 1;
 }
 
+//metodo que devuelve el_valor de la lista en la posicion dada en los parametros
+int Lista::get(int pos) {
+    Lista temporal(*this);
+    int contador = 0;
+    int esValido = 2;
+    while(contador<pos) {
+        if(temporal == *temporal.siguienteLista) {
+            esValido = esValido-1;
+        }
+        temporal = *temporal.siguienteLista;
+        ++contador;
+    }
+    if(esValido<= 0) {
+        cerr<<"se intento acceder a un valor fuera del rango de la Lista";
+        return 0;
+    } else {
+        return temporal.el_valor;
+    }
+}

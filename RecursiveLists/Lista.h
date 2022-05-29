@@ -14,12 +14,12 @@ class Lista {
         ostream& imprimir(ostream&);
     public:
         Lista();
-        Lista(const Lista&);
+        Lista(Lista&);                      //no hay que pasar el parametro como const, sino no se puede acceder a siguienteLista
         Lista(int,int[]);
         ~Lista();
         int insertar(int);
         int isEmpty();
-        Lista& operator = (const Lista&);
+        Lista& operator = (Lista&);         //no hay que pasar el parametro como const, sino no se puede acceder a siguienteLista
         int operator ==(const Lista&);
         int getFrecuencia(int);
         int get(int);    
