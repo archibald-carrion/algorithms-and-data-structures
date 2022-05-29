@@ -23,8 +23,12 @@ Lista::Lista(Lista& otra) {
 
 //metodo constructor por parametros, recibe una array de numeros 
 //y un int que indica la cantidad de elementos en el array
-Lista::Lista(int a, int b[]) {
-
+Lista::Lista(int cantidadElementos, int arregloElementos[]) {
+    int contador = 0;
+    while(contador < cantidadElementos){
+        this->insertar(arregloElementos[contador]);
+        ++contador;
+    }
 }
 
 //metodo destructor de la Lista
@@ -60,7 +64,7 @@ Lista& Lista::operator = (Lista& otra) {
 //metodo de sobrecarga del operator ==
 //permite verificar si una lista es igual a otra lista
 int Lista::operator == (const Lista& otra){
-    return 1;
+    //la versión original tenia un problema de recurisividad, por lo tanto tuve que hacerle cambios mayores
 }
 
 //metodo que devuelve el_valor de la lista en la posicion dada en los parametros
@@ -70,7 +74,7 @@ int Lista::get(int pos) {
     int esValido = 2;
     while(contador<pos) {
         if(temporal == *temporal.siguienteLista) {
-            esValido = esValido-1;
+            --esValido;
         }
         temporal = *temporal.siguienteLista;
         ++contador;
@@ -81,4 +85,52 @@ int Lista::get(int pos) {
     } else {
         return temporal.el_valor;
     }
+}
+
+//metodo getFrecuencia que devuelve la frecuencia del elemento de la posicion dada
+int Lista::getFrecuencia(int pos) {
+    Lista temporal(*this);
+    int contador = 0;
+    int posValida = 2;
+    while(contador <pos) {
+        if(temporal==*temporal.siguienteLista) {
+            --posValida;
+        }
+        temporal = *temporal.siguienteLista;
+        ++contador;
+    }
+
+    if(posValida>0){
+        int frecuencia = temporal.su_frecuencia;
+        //delete temporal;
+        return frecuencia ;
+    } else {
+        //delete temporal;
+        return 0;
+    }
+}
+
+//metodo imprimir que permite imprimir la lista
+ostream& Lista::imprimir(ostream& salida){
+    salida<<"Valor : "<<el_valor<<" Frecuencia : "<<su_frecuencia<<"/n";
+    if(!(*this==*siguienteLista)) {
+        siguienteLista -> imprimir(salida);
+    }
+    return salida;
+}
+
+//metodo insertar, no tuve tiempo de terminarla durante el examen entonces hare varias modificaciones ahora
+int Lista::insertar(int elemento){
+    Lista temporal(*this);
+    int elmentoExiste=0;
+    int posicionado = 0;
+
+    //el primer caso es cuando el elemento es menor al primer elemento, lo cual implica que aun no esta en la lista
+    if(elemento<temporal.el_valor) {
+        Lista nuevaLista();
+       // nuevoLista
+    }
+
+
+    return posicionado;
 }
