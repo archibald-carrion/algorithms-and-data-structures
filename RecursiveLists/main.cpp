@@ -1,1 +1,8 @@
-//main of the linked list
+#include "Lista.h"
+
+int main(){ 
+
+
+
+    return 0;
+}
