@@ -135,9 +135,25 @@ int Lista::insertar(int elemento){
         posicionado = 1;
         //delete nuevaLista;
     } else {
-        
+        //en ese while se busca si ya existe una lista con ese elemento
+        //en cual caso solo occupo incrementar de 1 la frecuencia
+        while(!(temporal==*temporal.siguienteLista)) {
+            if(elemento==temporal.el_valor) {
+                ++(temporal.su_frecuencia);
+                posicionado = 1;
+            }
+            temporal = *temporal.siguienteLista;
+        }
+
+        //en esa situación aun no esta posicionado, ya que es mayor al primer elemento y aun no existe un elemento 
+        //igual en la lista, por lo tanto hay que agregar una nueva lista en la buena posición
+        if(posicionado==0) {
+
+
+        }
+
+
+
     }
-
-
     return posicionado;
 }
