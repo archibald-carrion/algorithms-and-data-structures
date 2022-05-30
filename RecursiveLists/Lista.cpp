@@ -64,7 +64,28 @@ Lista& Lista::operator = (Lista& otra) {
 //metodo de sobrecarga del operator ==
 //permite verificar si una lista es igual a otra lista
 int Lista::operator == (const Lista& otra){
-    //la versión original tenia un problema de recurisividad, por lo tanto tuve que hacerle cambios mayores
+    int sonIguales = 1;
+    
+    if(!(otra.el_valor==el_valor && otra.su_frecuencia==su_frecuencia)){
+        sonIguales = 0;
+    }
+
+    if((*otra.siguienteLista).el_valor==otra.el_valor || (*siguienteLista).el_valor==el_valor){
+        if((*otra.siguienteLista).el_valor==otra.el_valor && (*siguienteLista).el_valor==el_valor){
+            sonIguales = 1;
+            return sonIguales;
+        } else {
+            sonIguales = 0;
+            return sonIguales;
+        }
+    }
+
+    if(sonIguales==0){
+        return 0;
+    } else {
+        return((*siguienteLista)==(*otra.siguienteLista));
+        //se llama el mismo metodo pero con las listas "siguientes"
+    }
 }
 
 //metodo que devuelve el_valor de la lista en la posicion dada en los parametros
