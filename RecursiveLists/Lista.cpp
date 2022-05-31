@@ -5,7 +5,7 @@ using namespace std;
 //metodo constructor por omisión, no recibe parametros
 Lista::Lista(){
     el_valor = 0;
-    su_frecuencia = 0;
+    su_frecuencia = 1;
     siguienteLista = 0; //no hay que desreferenciar el puntero cuando le doy el valor nulo (0)
 }
 
@@ -26,7 +26,7 @@ Lista::Lista(Lista& otra) {
 Lista::Lista(int cantidadElementos, int arregloElementos[]) {
     int contador = 0;
     while(contador < cantidadElementos){
-        this->insertar(arregloElementos[contador]);
+        //this->insertar(arregloElementos[contador]);
         ++contador;
     }
 }
@@ -133,7 +133,7 @@ int Lista::getFrecuencia(int pos) {
 
 //metodo imprimir que permite imprimir la lista
 ostream& Lista::imprimir(ostream& salida){
-    salida<<"Valor : "<<el_valor<<" Frecuencia : "<<su_frecuencia<<"/n";
+    salida<<"Valor : "<<el_valor<<" Frecuencia : "<<su_frecuencia<<"\n";
     if(!(*this==*siguienteLista)) {
         siguienteLista -> imprimir(salida);
     }
