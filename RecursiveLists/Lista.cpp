@@ -143,36 +143,40 @@ ostream& Lista::imprimir(ostream& salida){
 
 //metodo insertar, no tuve tiempo de terminarla durante el examen entonces hare varias modificaciones ahora
 int Lista::insertar(int elemento){
-    
-    //Lista temporal(*this);
-    int elmentoExiste=0;
     int posicionado = 0;
     cout<<"hola jajajajja"<<endl;
-    //el primer caso es cuando el elemento es menor al primer elemento, lo cual implica que aun no esta en la lista
-    /*
-    if(elemento<temporal.el_valor) {
-        Lista *nuevaLista = new Lista();
-        (*nuevaLista).su_frecuencia = 1;
-        (*nuevaLista).el_valor = elemento;
-        *(*nuevaLista).siguienteLista = *this;
-        *this = *nuevaLista;
-        posicionado = 1;
-        //delete nuevaLista;
+
+    //ese caso signfica que aun no hay elementos en la lista y por lo tanto se esta guardando el primero elemento
+    if(su_frecuencia==0){
+        el_valor = elemento;
+        su_frecuencia = 1;
+        return 1;
     } else {
-        //en ese while se busca si ya existe una lista con ese elemento
-        //en cual caso solo occupo incrementar de 1 la frecuencia
-        while(!(temporal==*temporal.siguienteLista)) {
-            if(elemento==temporal.el_valor) {
-                ++(temporal.su_frecuencia);
-                posicionado = 1;
+        //en ese caso se encontro el "campo" donde se tiene que insertar una nueva lista
+        if(elemento>el_valor && elemento<(*siguienteLista).el_valor){
+            //hay que agregar otro subcaso en el cual se agrega el elemento si es el ultimo !!
+
+            //hay que insertar una nueva lista aqui
+        } else {
+            //en ese caso ya existe el elemento en la lista y solo se occupa incrementar el la frecuencia
+            if(elemento==el_valor) {
+               //solo hay que incrementar la frecuencia, ya que ya existe el elemento en la lista
+            } else {
+                //en ese caso el valor es menor al priemr valor entonces hay que crear una neuva lista y ponerla al inicio
+                if(elemento<el_valor) {
+                    Lista *nuevaLista = new Lista();
+                    (*nuevaLista).su_frecuencia = 1;
+                    (*nuevaLista).el_valor = elemento;
+                    *(*nuevaLista).siguienteLista = *this;
+                    *this = *nuevaLista;
+                    return 1;
+                    //posicionado = 1;
+                    //delete nuevaLista;
+                } else {
+                    //hay que llamar de nuevo el metodo pero con la lsitaSiguiente
+                }
             }
-            temporal = *temporal.siguienteLista;
-        }
-        //en esa situación aun no esta posicionado, ya que es mayor al primer elemento y aun no existe un elemento 
-        //igual en la lista, por lo tanto hay que agregar una nueva lista en la buena posición
-        if(posicionado==0) {
         }
     }
-     */
-    return posicionado;
+    return 0;
 }

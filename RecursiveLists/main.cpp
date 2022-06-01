@@ -5,6 +5,8 @@ int main(){
     Lista lista1(); //lista por omisión
     int numeros[5]={5,4,3,2,1};
     Lista lista2(5,numeros); //occure un error en el constuctor que hace que se cae el programa
+    Lista lista3(lista2);
+    //for the moment the lista2 is not fully "functionnal"
     cout<<"lista1 :"<<endl;
     cout<<lista1<<endl;
     cout<<"lista2 :"<<endl;
