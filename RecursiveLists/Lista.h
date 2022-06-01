@@ -17,7 +17,7 @@ class Lista {
         Lista(Lista&);                      //no hay que pasar el parametro como const, sino no se puede acceder a siguienteLista
         Lista(int,int[]);
         ~Lista();
-        int insertar(int);
+        Lista& insertar(int);
         int isEmpty();
         Lista& operator = (Lista&);         //no hay que pasar el parametro como const, sino no se puede acceder a siguienteLista
         int operator ==(const Lista&);
