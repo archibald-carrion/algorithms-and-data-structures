@@ -49,18 +49,17 @@ int Lista::isEmpty() {
 //metodo de sobrecarga del operator =
 //permite asignar a una lista el contenido de otra lista
 Lista& Lista::operator = (Lista& otra) {
-    el_valor = otra.el_valor;
-    su_frecuencia = otra.su_frecuencia;
-    if(!(otra==*otra.siguienteLista)) { //solo se ejecuta en el caso que no sea el 
-        *siguienteLista = *otra.siguienteLista; 
-    } else {
-        *siguienteLista = *this;
+    if(otra.isEmpty()){
+        delete this;
+    } else{
+        siguienteLista = otra.siguienteLista;
+        el_valor = otra.el_valor;
+        su_frecuencia = otra.su_frecuencia;
     }
     return *this;
 }
 
-//metodo de sobrecarga del operator ==
-//permite verificar si una lista es igual a otra lista
+//metodo de sobrecarga del operator ==, permite verificar si una lista es igual a otra lista
 int Lista::operator == (const Lista& otra){
     int sonIguales = 1;
     
@@ -81,8 +80,7 @@ int Lista::operator == (const Lista& otra){
     if(sonIguales==0){
         return 0;
     } else {
-        return((*siguienteLista)==(*otra.siguienteLista));
-        //se llama el mismo metodo pero con las listas "siguientes"
+        return((*siguienteLista)==(*otra.siguienteLista));      //se llama el mismo metodo pero con las listas "siguientes"
     }
 }
 
@@ -143,7 +141,6 @@ ostream& Lista::imprimir(ostream& salida){
 //metodo insertar, no tuve tiempo de terminarla durante el examen entonces hare varias modificaciones ahora
 Lista& Lista::insertar(int elemento){
     //cout<<"Elemento que hay que insertar: "<< elemento<<endl;
-
     if(su_frecuencia==0){                                                   //la lista esta vacia por el momento
         //cout<<"caso 0"<<endl;
         el_valor = elemento;
