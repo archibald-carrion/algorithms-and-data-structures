@@ -41,13 +41,12 @@ Lista::~Lista() {
 int Lista::isEmpty() {
     int empty = 0;
     if(siguienteLista==0) {
-        empty = 1; //la lista es vacia, o nula, solo en el caso de que el atributo siguienteLista punta a 0
+        empty = 1; //la lista es vacia, solo en el caso de que el atributo siguienteLista punta a 0
     }
     return empty;
 }
 
-//metodo de sobrecarga del operator =
-//permite asignar a una lista el contenido de otra lista
+//metodo de sobrecarga del operator =, permite asignar a una lista el contenido de otra lista
 Lista& Lista::operator = (Lista& otra) {
     if(otra.isEmpty()){
         delete this;
@@ -86,6 +85,8 @@ int Lista::operator == (const Lista& otra){
 
 //metodo que devuelve el_valor de la lista en la posicion dada en los parametros
 int Lista::get(int pos) {
+    
+    /*
     Lista temporal(*this);
     int contador = 0;
     int esValido = 2;
@@ -102,6 +103,7 @@ int Lista::get(int pos) {
     } else {
         return temporal.el_valor;
     }
+    */
 }
 
 //metodo getFrecuencia que devuelve la frecuencia del elemento de la posicion dada

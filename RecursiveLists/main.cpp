@@ -16,5 +16,10 @@ int main(){
     cout<<"lista1.isEmpty = "<<(*lista1).isEmpty()<<endl;
     cout<<"lista2.isEmpty = " << lista2.isEmpty()<<endl;
     
+    //int numero = lista2==(*lista1);
+    //cout<<numero<<endl;
+
+    cout<<lista2.get(0)<<endl;
+    
     return 0;
 }
