@@ -26,7 +26,8 @@ Lista::Lista(Lista& otra) {
 Lista::Lista(int cantidadElementos, int arregloElementos[]) {
     int contador = 0;
     while(contador < cantidadElementos){
-        //this->insertar(arregloElementos[contador]);
+        insertar(arregloElementos[contador]);
+        cout<<"se ejecuto el while"<<endl;
         ++contador;
     }
 }
@@ -142,11 +143,13 @@ ostream& Lista::imprimir(ostream& salida){
 
 //metodo insertar, no tuve tiempo de terminarla durante el examen entonces hare varias modificaciones ahora
 int Lista::insertar(int elemento){
-    Lista temporal(*this);
+    
+    //Lista temporal(*this);
     int elmentoExiste=0;
     int posicionado = 0;
-
+    cout<<"hola jajajajja"<<endl;
     //el primer caso es cuando el elemento es menor al primer elemento, lo cual implica que aun no esta en la lista
+    /*
     if(elemento<temporal.el_valor) {
         Lista *nuevaLista = new Lista();
         (*nuevaLista).su_frecuencia = 1;
@@ -165,16 +168,11 @@ int Lista::insertar(int elemento){
             }
             temporal = *temporal.siguienteLista;
         }
-
         //en esa situación aun no esta posicionado, ya que es mayor al primer elemento y aun no existe un elemento 
         //igual en la lista, por lo tanto hay que agregar una nueva lista en la buena posición
         if(posicionado==0) {
-
-
         }
-
-
-
     }
+     */
     return posicionado;
 }
