@@ -5,12 +5,11 @@ using namespace std;
 //metodo constructor por omisión, no recibe parametros
 Lista::Lista(){
     el_valor = 0;
-    su_frecuencia = 1;
+    su_frecuencia = 0;
     siguienteLista = 0; //no hay que desreferenciar el puntero cuando le doy el valor nulo (0)
 }
 
 //metodo constructor por copia
-//como la lista es recursiva, entonces el mismo constructor es recursivo
 Lista::Lista(Lista& otra) {
     el_valor = otra.el_valor;
     su_frecuencia = otra.su_frecuencia;
@@ -21,20 +20,17 @@ Lista::Lista(Lista& otra) {
     }
 }
 
-//metodo constructor por parametros, recibe una array de numeros 
-//y un int que indica la cantidad de elementos en el array
+//metodo constructor por parametros, recibe una array de numeros y un int que indica la cantidad de elementos en el array
 Lista::Lista(int cantidadElementos, int arregloElementos[]) {
     int contador = 0;
     su_frecuencia=0;
     while(contador < cantidadElementos){
         insertar(arregloElementos[contador]);
-        //cout<<"ciclo Constructor"<<endl;
         ++contador;
     }
 }
 
-//metodo destructor de la Lista
-//hace delete a cada elemento de manera recursiva
+//metodo destructor de la Lista, se llama recursivamente hasta llegar al ultimo elemento
 Lista::~Lista() {
     if(!(*this==*siguienteLista)) { //caso base de la recursividad para que no se encicla el programa
         delete siguienteLista;
@@ -125,42 +121,38 @@ int Lista::getFrecuencia(int pos) {
 
     if(posValida>0){
         int frecuencia = temporal.su_frecuencia;
-        //delete temporal;
         return frecuencia ;
     } else {
-        //delete temporal;
         return 0;
     }
 }
 
 //metodo imprimir que permite imprimir la lista
 ostream& Lista::imprimir(ostream& salida){
-    salida<<"Valor : "<<el_valor<<" Frecuencia : "<<su_frecuencia<<"\n";
-    if(!(*this==*siguienteLista)) {
-        siguienteLista -> imprimir(salida);
+    if(this->isEmpty()){ 
+        salida<<"Valor : "<<el_valor<<" Frecuencia : "<<su_frecuencia<<"\n";
+    } else {
+        salida<<"Valor : "<<el_valor<<" Frecuencia : "<<su_frecuencia<<"\n";
+        if(!(*this==*siguienteLista)) {
+            siguienteLista -> imprimir(salida);
+        }
     }
     return salida;
 }
 
 //metodo insertar, no tuve tiempo de terminarla durante el examen entonces hare varias modificaciones ahora
 Lista& Lista::insertar(int elemento){
-   // Lista *lista = new Lista(*this);
-    //Lista laLista(*this);
-    //int posicionado = 0;
-    //cout<<"metodo insertar"<<endl;
-    cout<<"Elemento que hay que insertar: "<< elemento<<endl;
+    //cout<<"Elemento que hay que insertar: "<< elemento<<endl;
 
     if(su_frecuencia==0){                                                   //la lista esta vacia por el momento
-        cout<<"caso 0"<<endl;
+        //cout<<"caso 0"<<endl;
         el_valor = elemento;
         su_frecuencia = 1;
         siguienteLista = this;
         return *this;
-        //return 1;
     } else {
-        //cout<<"a"<<endl;
         if(elemento>el_valor && (*siguienteLista).el_valor==el_valor){      //hay que agregar una lista al final de la lista
-            cout<<"caso 1"<<endl;
+            //cout<<"caso 1"<<endl;
             Lista *nuevaLista = new Lista();
             (*nuevaLista).su_frecuencia = 1;
             (*nuevaLista).el_valor = elemento;
@@ -169,7 +161,7 @@ Lista& Lista::insertar(int elemento){
             return *this;
         } else {
             if(elemento>el_valor && elemento<(*siguienteLista).el_valor){   //hay que insertar una nueva lista entre 2 listas
-                cout<<"caso 2"<<endl;
+                //cout<<"caso 2"<<endl;
                 Lista *nuevaLista = new Lista();
                 (*nuevaLista).su_frecuencia = 1;
                 (*nuevaLista).el_valor = elemento;
@@ -178,19 +170,19 @@ Lista& Lista::insertar(int elemento){
                 return *this;
             } else {
                 if(elemento==el_valor) {                                    //ya existe, solo se occupa incrementar la frecuencia
-                    cout<<"caso 3"<<endl;
+                    //cout<<"caso 3"<<endl;
                     ++su_frecuencia;
                     return *this;               
                 } else {                    //en ese caso el valor es menor al priemr valor entonces hay que crear una neuva lista y ponerla al inicio
                     if(elemento<el_valor) {
-                        cout<<"caso 4"<<endl;
+                        //cout<<"caso 4"<<endl;
                         Lista *nuevaLista = new Lista();
                         (*nuevaLista).su_frecuencia = 1;
                         (*nuevaLista).el_valor = elemento;
                         (*nuevaLista).siguienteLista = this;
                         return (*nuevaLista);
                     } else {
-                        cout<<"caso 5"<<endl;
+                        //cout<<"caso 5"<<endl;
                         (*siguienteLista).insertar(elemento);
                     }
                 }
