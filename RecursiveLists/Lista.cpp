@@ -146,37 +146,44 @@ int Lista::insertar(int elemento){
     int posicionado = 0;
     cout<<"hola jajajajja"<<endl;
 
-    //ese caso signfica que aun no hay elementos en la lista y por lo tanto se esta guardando el primero elemento
     if(su_frecuencia==0){
         el_valor = elemento;
         su_frecuencia = 1;
         return 1;
     } else {
-        //en ese caso se encontro el "campo" donde se tiene que insertar una nueva lista
-        if(elemento>el_valor && elemento<(*siguienteLista).el_valor){
-            //hay que agregar otro subcaso en el cual se agrega el elemento si es el ultimo !!
-
-            //hay que insertar una nueva lista aqui
+        if(elemento>el_valor && (*siguienteLista).el_valor==el_valor){  //elemento es mayor al ultimo elemento de la lista
+            Lista *nuevaLista = new Lista();
+            (*nuevaLista).su_frecuencia = 1;
+            (*nuevaLista).el_valor = elemento;
+            (*nuevaLista).siguienteLista = nuevaLista;
+            siguienteLista = nuevaLista;
+            return 1;
         } else {
-            //en ese caso ya existe el elemento en la lista y solo se occupa incrementar el la frecuencia
-            if(elemento==el_valor) {
-               //solo hay que incrementar la frecuencia, ya que ya existe el elemento en la lista
+            if(elemento>el_valor && elemento<(*siguienteLista).el_valor){
+                Lista *nuevaLista = new Lista();
+                (*nuevaLista).su_frecuencia = 1;
+                (*nuevaLista).el_valor = elemento;
+                (*nuevaLista).siguienteLista = siguienteLista;
+                siguienteLista = nuevaLista;
+                return 1;
             } else {
-                //en ese caso el valor es menor al priemr valor entonces hay que crear una neuva lista y ponerla al inicio
-                if(elemento<el_valor) {
-                    Lista *nuevaLista = new Lista();
-                    (*nuevaLista).su_frecuencia = 1;
-                    (*nuevaLista).el_valor = elemento;
-                    *(*nuevaLista).siguienteLista = *this;
-                    *this = *nuevaLista;
-                    return 1;
-                    //posicionado = 1;
-                    //delete nuevaLista;
-                } else {
-                    //hay que llamar de nuevo el metodo pero con la lsitaSiguiente
+                if(elemento==el_valor) {    //en ese caso ya existe el elemento en la lista y solo se occupa incrementar el la frecuencia
+                    ++su_frecuencia;        //solo hay que incrementar la frecuencia, ya que ya existe el elemento en la lista
+                    return 1;               
+                } else {                    //en ese caso el valor es menor al priemr valor entonces hay que crear una neuva lista y ponerla al inicio
+                    if(elemento<el_valor) {
+                        Lista *nuevaLista = new Lista();
+                        (*nuevaLista).su_frecuencia = 1;
+                        (*nuevaLista).el_valor = elemento;
+                        *(*nuevaLista).siguienteLista = *this;
+                        *this = *nuevaLista;
+                        return 1;
+                    } else {
+                        return (*siguienteLista).insertar(elemento);
+                    }
                 }
             }
         }
     }
-    return 0;
+    //return 0;
 }
