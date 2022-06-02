@@ -23,5 +23,6 @@ class Lista {
         int operator ==(const Lista&);
         int getFrecuencia(int);
         int get(int);    
+        int getSize();      //metodo que devuelve el tamano de la lista
 };
 #endif
