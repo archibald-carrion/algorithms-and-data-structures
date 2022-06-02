@@ -164,10 +164,13 @@ Lista& Lista::insertar(int elemento){
                     if(elemento<el_valor) {
                         cout<<"caso 4"<<endl;
                         Lista *nuevaLista = new Lista();
-                        (*nuevaLista).su_frecuencia = 1;
-                        (*nuevaLista).el_valor = elemento;
-                        (*nuevaLista).siguienteLista = this;
-                        //return this;
+                        (*nuevaLista).su_frecuencia = su_frecuencia;
+                        (*nuevaLista).el_valor = el_valor;
+                        (*nuevaLista).siguienteLista = siguienteLista;
+                        el_valor = elemento;
+                        su_frecuencia = 1;
+                        siguienteLista = nuevaLista;
+                        return *this;
                         //return (*nuevaLista);
                     } else {
                         //cout<<"caso 5"<<endl;
