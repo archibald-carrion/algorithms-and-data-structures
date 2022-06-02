@@ -1,27 +1,59 @@
+#include <fstream>
+#include <iostream>
 #include "Lista.h"
 
 int main(){ 
     //como descrito en el enunciado, se recibe un archivo de texto con la estructura deseada
-    //lo cual es recibir cada dato en una linea differente, ya que voy a utilizar la función 
+    //lo cual es recibir cada dato en una linea differente para que sea mas lisible
     
-    //primero hay que abrir el archivo de texto
-    //se crea una lista por omision
-    //en un ciclo se agrega cada elemento en la lista, linea por linea
-    //despues se llama cada frecuencia y se saca la frecuencia de la frecuencia
     Lista *lista = new Lista();
-    char* archivoTexto = (char*)"datos.txt";
-    FILE *miDocumento;
-	miDocumento = fopen(archivoTexto,"r+t");
-	//int contador = 0;
-    char* input;
-    int finArchivo = 0;
-	//el while permite reiterar la cantidad de veces necesarias para sacar la linea necesitada
-	while(finArchivo != 1) {
-		//hileraLinea[0]='\0';
-		fgets(input, 50, miDocumento);
-        
-        //hay que poner un if para saber si es el fin del archivos
+    int data;
+    ifstream documento;
+    documento.open((char*)"datos.txt",ios::in);
+    documento>>data;
+    //cout<<data<<endl; 
+    //char* archivoTexto = (char*)"datos.txt";
+    //FILE *miDocumento;
+	//miDocumento = fopen(archivoTexto,"r+t");
+    //const int sizeInput = 10;
+    // char input[sizeInput];
+
+    //int finArchivo = 0;
+	while(!documento.eof()) {
+        cout<<data<<endl;
+        //codigo que guarda el int en la lista
+        documento>>data;
+        //cout<<input<<endl;
+		//fgets(input, sizeInput, miDocumento);
+
+       // if(input.eof()){
+         //   finArchivo=1;
+        //}
+        //cout<<input<<endl;
+        /*
+        int contador=0;
+        while(contador<sizeInput){
+            if(input[contador]=='\0'){
+                finArchivo=1;
+            }
+            ++contador;
+        }*/
+
+        //cout<<input<<endl; 
 	}
-	fclose(miDocumento);
+    documento.close();
+	//fclose(miDocumento);
+
+
+    //aqui se pone el codigo para sacar las frecuencias y las frecuiencias de frecuencias
+
+
+
+
+
+
+
+
+
     return 0;
 }
