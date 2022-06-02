@@ -8,8 +8,9 @@ int main(int args, char **argv){
     
     Lista lista;
     int data;
-    ifstream documentoInput(inputFile);
-    if(!(documentoInput.is_open())){
+    ifstream documentoInput;
+    documentoInput.open(inputFile, ios::in);
+    if(documentoInput.fail()){
         cout<<"problema con la apertura del archivo de texto"<<endl;
     } 
     documentoInput>>data;
@@ -31,8 +32,10 @@ int main(int args, char **argv){
     }
     cout<<listaFrecuencia<<endl;
     
-    ofstream documentoOuput(outputFile);
-    if(documentoOuput.is_open()){
+    ofstream documentoOuput;
+    //cout<<outputFile<<endl;
+	documentoOuput.open(outputFile,ios::out);
+    if(!(documentoOuput.fail())){
         documentoOuput<<"Frecuencia\tCantidad de Números \n";
     } else {
         cout<<"problema con la apertura del archivo de texto"<<endl;
