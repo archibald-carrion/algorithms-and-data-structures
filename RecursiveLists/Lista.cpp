@@ -132,14 +132,14 @@ ostream& Lista::imprimir(ostream& salida){
 Lista& Lista::insertar(int elemento){
     //cout<<"Elemento que hay que insertar: "<< elemento<<endl;
     if(su_frecuencia==0){                                                   //la lista esta vacia por el momento
-        //cout<<"caso 0"<<endl;
+        cout<<"caso 0"<<endl;
         el_valor = elemento;
         su_frecuencia = 1;
         siguienteLista = this;
         return *this;
     } else {
         if(elemento>el_valor && (*siguienteLista).el_valor==el_valor){      //hay que agregar una lista al final de la lista
-            //cout<<"caso 1"<<endl;
+            cout<<"caso 1"<<endl;
             Lista *nuevaLista = new Lista();
             (*nuevaLista).su_frecuencia = 1;
             (*nuevaLista).el_valor = elemento;
@@ -148,7 +148,7 @@ Lista& Lista::insertar(int elemento){
             return *this;
         } else {
             if(elemento>el_valor && elemento<(*siguienteLista).el_valor){   //hay que insertar una nueva lista entre 2 listas
-                //cout<<"caso 2"<<endl;
+                cout<<"caso 2"<<endl;
                 Lista *nuevaLista = new Lista();
                 (*nuevaLista).su_frecuencia = 1;
                 (*nuevaLista).el_valor = elemento;
@@ -157,7 +157,7 @@ Lista& Lista::insertar(int elemento){
                 return *this;
             } else {
                 if(elemento==el_valor) {                                    //ya existe, solo se occupa incrementar la frecuencia
-                    //cout<<"caso 3"<<endl;
+                    cout<<"caso 3"<<endl;
                     ++su_frecuencia;
                     return *this;               
                 } else {                    //en ese caso el valor es menor al priemr valor entonces hay que crear una neuva lista y ponerla al inicio
@@ -166,7 +166,12 @@ Lista& Lista::insertar(int elemento){
                         Lista *nuevaLista = new Lista();
                         (*nuevaLista).su_frecuencia = su_frecuencia;
                         (*nuevaLista).el_valor = el_valor;
-                        (*nuevaLista).siguienteLista = siguienteLista;
+                        if(!(*this==*siguienteLista)){
+                            (*nuevaLista).siguienteLista = siguienteLista;
+                        } else {    //en ese caso el elemento se vuelve el ultimo elemento
+                             (*nuevaLista).siguienteLista = nuevaLista;
+                        }
+                        //(*nuevaLista).siguienteLista = siguienteLista;
                         el_valor = elemento;
                         su_frecuencia = 1;
                         siguienteLista = nuevaLista;
