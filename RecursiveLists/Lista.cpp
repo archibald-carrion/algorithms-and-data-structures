@@ -196,4 +196,24 @@ int Lista::getSize(){
     }
 }
 
+Lista::Iterador::Iterador(){
+    pointerLista = 0;
+}
 
+Lista::Iterador::Iterador(Lista* unaLista){
+    pointerLista = unaLista;
+}
+
+//devuelve la posicion "siguiente", ++iterador
+Lista::Iterador& Lista::Iterador::operator++(){
+    pointerLista = (*pointerLista).siguienteLista;
+    return *this;
+}     
+
+int Lista::Iterador::operator==(Iterador&){
+    //solo hay que verificar si apuntan a la misma Lista
+}
+
+Lista::Iterador& Lista::Iterador::getUltimo(){
+    //itera en la lista hastra llegar a un punto donde siguienteLista == this
+}

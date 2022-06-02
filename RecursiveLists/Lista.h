@@ -28,6 +28,8 @@ class Lista {
 
         class Iterador {
             friend class Lista;
+            private:
+                Lista *pointerLista;
             public:
                 Iterador();
                 Iterador(Lista*);
