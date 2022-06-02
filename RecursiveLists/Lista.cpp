@@ -210,10 +210,15 @@ Lista::Iterador& Lista::Iterador::operator++(){
     return *this;
 }     
 
-int Lista::Iterador::operator==(Iterador&){
-    //solo hay que verificar si apuntan a la misma Lista
+int Lista::Iterador::operator==(Iterador& otro){
+    if(*(otro.pointerLista) == *pointerLista){
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 Lista::Iterador& Lista::Iterador::getUltimo(){
+    
     //itera en la lista hastra llegar a un punto donde siguienteLista == this
 }
