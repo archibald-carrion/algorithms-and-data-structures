@@ -13,8 +13,9 @@ Lista::Lista(){
 Lista::Lista(Lista& otra) {
     el_valor = otra.el_valor;
     su_frecuencia = otra.su_frecuencia;
-    if(!(otra==*otra.siguienteLista)) {
-        Lista *siguienteLista = new Lista(*otra.siguienteLista);
+    if(!(otra==*(otra.siguienteLista))) {
+        Lista *nuevaLista = new Lista(*(otra.siguienteLista));
+        siguienteLista = nuevaLista;
     } else {
         siguienteLista = this;
     }
@@ -49,7 +50,9 @@ int Lista::isEmpty() {
 //metodo de sobrecarga del operator =, permite asignar a una lista el contenido de otra lista
 Lista& Lista::operator = (Lista& otra) {
     if(otra.isEmpty()){
-        delete this;
+        su_frecuencia=0;
+        el_valor=0;
+        siguienteLista=0;
     } else{
         siguienteLista = otra.siguienteLista;
         el_valor = otra.el_valor;
