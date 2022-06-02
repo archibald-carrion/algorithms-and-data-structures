@@ -54,7 +54,9 @@ Lista& Lista::operator = (Lista& otra) {
         el_valor=0;
         siguienteLista=0;
     } else{
-        siguienteLista = otra.siguienteLista;
+        Lista *nuevaLista = new Lista(*(otra.siguienteLista));
+        siguienteLista = nuevaLista;
+        //siguienteLista = otra.siguienteLista;
         el_valor = otra.el_valor;
         su_frecuencia = otra.su_frecuencia;
     }
@@ -98,24 +100,6 @@ int Lista::get(int pos) {
             return (*siguienteLista).get(pos-1);
         }
     }
-    /*
-    Lista temporal(*this);
-    int contador = 0;
-    int esValido = 2;
-    while(contador<pos) {
-        if(temporal == *temporal.siguienteLista) {
-            --esValido;
-        }
-        temporal = *temporal.siguienteLista;
-        ++contador;
-    }
-    if(esValido<= 0) {
-        cerr<<"se intento acceder a un valor fuera del rango de la Lista";
-        return 0;
-    } else {
-        return temporal.el_valor;
-    }
-    */
 }
 
 //metodo getFrecuencia que devuelve la frecuencia del elemento de la posicion dada
@@ -129,34 +113,6 @@ int Lista::getFrecuencia(int pos) {
             return (*siguienteLista).getFrecuencia(pos-1);
         }
     }
-    /*
-    if(pos == 0){
-        return el_valor;
-    } else {
-        if(pos>0 && (this == siguienteLista)){
-            return 0;
-        } else {
-            return (*siguienteLista).get(pos-1);
-        }
-    }*/
-    /*
-    Lista temporal(*this);
-    int contador = 0;
-    int posValida = 2;
-    while(contador <pos) {
-        if(temporal==*temporal.siguienteLista) {
-            --posValida;
-        }
-        temporal = *temporal.siguienteLista;
-        ++contador;
-    }
-
-    if(posValida>0){
-        int frecuencia = temporal.su_frecuencia;
-        return frecuencia ;
-    } else {
-        return 0;
-    }*/
 }
 
 //metodo imprimir que permite imprimir la lista
@@ -206,12 +162,13 @@ Lista& Lista::insertar(int elemento){
                     return *this;               
                 } else {                    //en ese caso el valor es menor al priemr valor entonces hay que crear una neuva lista y ponerla al inicio
                     if(elemento<el_valor) {
-                        //cout<<"caso 4"<<endl;
+                        cout<<"caso 4"<<endl;
                         Lista *nuevaLista = new Lista();
                         (*nuevaLista).su_frecuencia = 1;
                         (*nuevaLista).el_valor = elemento;
                         (*nuevaLista).siguienteLista = this;
-                        return (*nuevaLista);
+                        //return this;
+                        //return (*nuevaLista);
                     } else {
                         //cout<<"caso 5"<<endl;
                         (*siguienteLista).insertar(elemento);
