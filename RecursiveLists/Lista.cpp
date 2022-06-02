@@ -85,7 +85,16 @@ int Lista::operator == (const Lista& otra){
 
 //metodo que devuelve el_valor de la lista en la posicion dada en los parametros
 int Lista::get(int pos) {
-    
+    if(pos>0 && (*this == *siguienteLista)){
+        cerr<<"se intento acceder a un valor fuera del rango de la Lista";
+        return 0;
+    } else {
+        if(pos == 0){
+            return el_valor;
+        } else {
+            return (*siguienteLista).get(pos-1);
+        }
+    }
     /*
     Lista temporal(*this);
     int contador = 0;
@@ -108,6 +117,26 @@ int Lista::get(int pos) {
 
 //metodo getFrecuencia que devuelve la frecuencia del elemento de la posicion dada
 int Lista::getFrecuencia(int pos) {
+    if(pos>0 && (*this == *siguienteLista)){
+        return 0;
+    } else {
+        if(pos == 0){
+            return su_frecuencia;
+        } else {
+            return (*siguienteLista).getFrecuencia(pos-1);
+        }
+    }
+    /*
+    if(pos == 0){
+        return el_valor;
+    } else {
+        if(pos>0 && (this == siguienteLista)){
+            return 0;
+        } else {
+            return (*siguienteLista).get(pos-1);
+        }
+    }*/
+    /*
     Lista temporal(*this);
     int contador = 0;
     int posValida = 2;
@@ -124,7 +153,7 @@ int Lista::getFrecuencia(int pos) {
         return frecuencia ;
     } else {
         return 0;
-    }
+    }*/
 }
 
 //metodo imprimir que permite imprimir la lista
