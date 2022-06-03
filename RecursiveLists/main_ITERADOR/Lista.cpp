@@ -219,6 +219,9 @@ int Lista::Iterador::operator==(Iterador& otro){
 }
 
 Lista::Iterador& Lista::Iterador::getUltimo(){
-    
+    while(!(*pointerLista==*((*pointerLista).siguienteLista))){
+        pointerLista = (*pointerLista).siguienteLista;
+    }
+    return *this;
     //itera en la lista hastra llegar a un punto donde siguienteLista == this
 }
