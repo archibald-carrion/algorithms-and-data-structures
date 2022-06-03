@@ -119,7 +119,6 @@ int Lista::getFrecuencia(int pos) {
     int valorFinal = 0;
     while(encontrado==0){
         if(pos>0 && *(iterador.pointerLista)==*((*(iterador.pointerLista)).siguienteLista)){
-            //cerr<<"se intento acceder a un valor fuera del rango de la Lista";
             valorFinal= 0;
             encontrado= 1;
         } else {
@@ -133,16 +132,6 @@ int Lista::getFrecuencia(int pos) {
         }
     }
     return valorFinal;
-    /*
-    if(pos>0 && (*this == *siguienteLista)){
-        return 0;
-    } else {
-        if(pos == 0){
-            return su_frecuencia;
-        } else {
-            return (*siguienteLista).getFrecuencia(pos-1);
-        }
-    }*/
 }
 
 //metodo imprimir que permite imprimir la lista
@@ -218,12 +207,33 @@ Lista& Lista::insertar(int elemento){
 }
 
 int Lista::getSize(){
+    Iterador iterador(this);
+    int encontrado = 0;
+    int size = 0;
+    while(encontrado==0){
+        if(*(iterador.pointerLista)==*((*(iterador.pointerLista)).siguienteLista)){
+            ++size;
+            encontrado= 1;
+        } else {
+            ++size;
+            iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
+            //if(pos==0) {
+            //    valorFinal = (*(iterador.pointerLista)).su_frecuencia;
+            //    encontrado=1;
+           // } else {
+           //     iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
+              //  --pos;
+           // }
+        }
+    }
+    return size;
+    /*
     int size;
     if(*this==*siguienteLista){
         return 1;
     } else {
         return (*siguienteLista).getSize()+1;
-    }
+    }*/
 }
 
 Lista::Iterador::Iterador(){
