@@ -8,17 +8,7 @@ class Lista {
         return lista.imprimir(salida);
     }
 
-    class Iterador {
-        friend class Lista;
-        private:
-            Lista *pointerLista;
-        public:
-            Iterador();
-            Iterador(Lista*);
-            Iterador& operator++();     //devuelve la posicion "siguiente", ++iterador
-            int operator==(Iterador&);
-            Iterador& getUltimo();      //devuelve un iterador que apunta al ultimo elemento de la Lista
-    };
+    
 
     friend class Iterador;
 
@@ -40,8 +30,22 @@ class Lista {
         int getFrecuencia(int);
         int get(int);    
         int getSize();      //metodo que devuelve el tamano de la lista
+        int getFrecuencia();    //no recibe parametros, solo revuelve la frecuencia
+        int getValor();
 
-
+class Iterador {
+        friend class Lista;
+        private:
+            Lista *pointerLista;
+        public:
+            Iterador();
+            Iterador(Lista*);
+            Iterador& operator++();     //devuelve la posicion "siguiente", ++iterador
+            int operator==(Iterador&);
+            Iterador& operator=(Iterador&);
+            Iterador& getUltimo();      //devuelve un iterador que apunta al ultimo elemento de la Lista
+            Lista* getPointer();
+    };
         
 
 };

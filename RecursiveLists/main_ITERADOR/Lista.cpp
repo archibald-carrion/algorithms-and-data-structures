@@ -221,6 +221,14 @@ int Lista::getSize(){
     return size;
 }
 
+int Lista::getValor(){
+    return el_valor;
+}
+
+int Lista::getFrecuencia(){
+    return su_frecuencia;
+}
+
 Lista::Iterador::Iterador(){
     pointerLista = 0;
 }
@@ -243,9 +251,18 @@ int Lista::Iterador::operator==(Iterador& otro){
     }
 }
 
+Lista:: Iterador& Lista::Iterador::operator=(Iterador& otro){
+    pointerLista = otro.pointerLista;
+    return *this;
+}
+
 Lista::Iterador& Lista::Iterador::getUltimo(){
     while(!(*pointerLista==*((*pointerLista).siguienteLista))){
         pointerLista = (*pointerLista).siguienteLista;
     }
     return *this;
+}
+
+Lista* Lista::Iterador::getPointer(){
+    return pointerLista;
 }
