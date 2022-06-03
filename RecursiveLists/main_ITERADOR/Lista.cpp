@@ -101,7 +101,7 @@ int Lista::get(int pos) {
             encontrado= 1;
         } else {
             if(pos==0) {
-                valorFinal = el_valor;
+                valorFinal = (*(iterador.pointerLista)).el_valor;
                 encontrado=1;
             } else {
                 iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
@@ -114,6 +114,26 @@ int Lista::get(int pos) {
 
 //metodo getFrecuencia que devuelve la frecuencia del elemento de la posicion dada
 int Lista::getFrecuencia(int pos) {
+    Iterador iterador(this);
+    int encontrado = 0;
+    int valorFinal = 0;
+    while(encontrado==0){
+        if(pos>0 && *(iterador.pointerLista)==*((*(iterador.pointerLista)).siguienteLista)){
+            //cerr<<"se intento acceder a un valor fuera del rango de la Lista";
+            valorFinal= 0;
+            encontrado= 1;
+        } else {
+            if(pos==0) {
+                valorFinal = (*(iterador.pointerLista)).su_frecuencia;
+                encontrado=1;
+            } else {
+                iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
+                --pos;
+            }
+        }
+    }
+    return valorFinal;
+    /*
     if(pos>0 && (*this == *siguienteLista)){
         return 0;
     } else {
@@ -122,7 +142,7 @@ int Lista::getFrecuencia(int pos) {
         } else {
             return (*siguienteLista).getFrecuencia(pos-1);
         }
-    }
+    }*/
 }
 
 //metodo imprimir que permite imprimir la lista
