@@ -22,7 +22,8 @@ int main(int args, char **argv){
         cout<<"problema con la apertura del archivo de texto"<<endl;
     } 
     documentoInput>>data;
-    lista.insertar(data);    //para "recibir" el primer data
+    lista.insertar(data);
+    //ese while permite guardar en la lsita todos los ints que se encontran en el archivo de texto
 	while(!documentoInput.eof()) {
         documentoInput>>data;
         //cout<<data<<endl;
@@ -35,16 +36,17 @@ int main(int args, char **argv){
     int counter = 0;
     Lista listaFrecuencia;
 
-    Lista::Iterador iterador1(&listaFrecuencia);
+    Lista::Iterador iterador1(&lista);
+    //en ese while se guarda las frecuencias en una lista de frecuencias
+    //de esa manera es mucho mas facil extraer las frecuencias de frecuencias
     while(counter<sizeLista){
-        //(*iterador.getPointer()).getFrecuencia()
-        listaFrecuencia.insertar(lista.getFrecuencia(counter));
+        listaFrecuencia.insertar((*iterador1.getPointer()).getFrecuencia());
+        ++iterador1;
         ++counter;
     }
     cout<<listaFrecuencia<<endl;
     
     ofstream documentoOuput;
-    //cout<<outputFile<<endl;
 	documentoOuput.open(outputFile,ios::out);
     if(!(documentoOuput.fail())){
         documentoOuput<<"Frecuencia\tCantidad de Numeros \n";
@@ -56,6 +58,7 @@ int main(int args, char **argv){
     counter = 0;
     Lista::Iterador iterador2 = (&listaFrecuencia);
     cout<<"Frecuencia\tCantidad de Numeros \n";
+    //en ese while se guarda cada valor en el archivo de texto
     while(counter<sizeFrecuencia){
         documentoOuput << (*iterador2.getPointer()).getValor() << "\t\t" << (*iterador2.getPointer()).getFrecuencia()<<"\n";
         cout << (*iterador2.getPointer()).getValor() << "\t\t" << (*iterador2.getPointer()).getFrecuencia()<<"\n";

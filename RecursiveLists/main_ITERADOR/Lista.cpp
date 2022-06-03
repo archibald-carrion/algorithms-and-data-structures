@@ -205,6 +205,7 @@ Lista& Lista::insertar(int elemento){
     return *this;
 }
 
+//metodo que devuelve el tamano de la lista
 int Lista::getSize(){
     Iterador iterador(this);
     int encontrado = 0;
@@ -221,18 +222,22 @@ int Lista::getSize(){
     return size;
 }
 
+//metodo que devuelve el valor de la lista
 int Lista::getValor(){
     return el_valor;
 }
 
+//metodo que devuelve la frecuencia de la lista
 int Lista::getFrecuencia(){
     return su_frecuencia;
 }
 
+//metodo construcotr por omisión de iterador
 Lista::Iterador::Iterador(){
     pointerLista = 0;
 }
 
+//metodo constructor con parametro de iterador
 Lista::Iterador::Iterador(Lista* unaLista){
     pointerLista = unaLista;
 }
@@ -243,6 +248,7 @@ Lista::Iterador& Lista::Iterador::operator++(){
     return *this;
 }     
 
+//metodo que verifica si 2 listas son iguales, devuelve 1 si son las mismas
 int Lista::Iterador::operator==(Iterador& otro){
     if(*(otro.pointerLista) == *pointerLista){
         return 1;
@@ -251,11 +257,13 @@ int Lista::Iterador::operator==(Iterador& otro){
     }
 }
 
+//metodo que asigna une nuevo valor al iterador
 Lista:: Iterador& Lista::Iterador::operator=(Iterador& otro){
     pointerLista = otro.pointerLista;
     return *this;
 }
 
+//metodo que devuelve el ultimo elemento de la lista
 Lista::Iterador& Lista::Iterador::getUltimo(){
     while(!(*pointerLista==*((*pointerLista).siguienteLista))){
         pointerLista = (*pointerLista).siguienteLista;
@@ -263,6 +271,7 @@ Lista::Iterador& Lista::Iterador::getUltimo(){
     return *this;
 }
 
+//metodo que devuelve el pointerLista del iterador
 Lista* Lista::Iterador::getPointer(){
     return pointerLista;
 }

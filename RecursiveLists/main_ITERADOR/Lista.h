@@ -8,8 +8,6 @@ class Lista {
         return lista.imprimir(salida);
     }
 
-    
-
     friend class Iterador;
 
     private:
@@ -33,7 +31,7 @@ class Lista {
         int getFrecuencia();    //no recibe parametros, solo revuelve la frecuencia
         int getValor();
 
-class Iterador {
+    class Iterador {
         friend class Lista;
         private:
             Lista *pointerLista;
@@ -46,7 +44,5 @@ class Iterador {
             Iterador& getUltimo();      //devuelve un iterador que apunta al ultimo elemento de la Lista
             Lista* getPointer();
     };
-        
-
 };
 #endif

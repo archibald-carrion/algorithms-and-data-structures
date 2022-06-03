@@ -24,19 +24,5 @@ class Lista {
         int getFrecuencia(int);
         int get(int);    
         int getSize();      //metodo que devuelve el tamano de la lista
-
-
-        class Iterador {
-            friend class Lista;
-            private:
-                Lista *pointerLista;
-            public:
-                Iterador();
-                Iterador(Lista*);
-                Iterador& operator++();     //devuelve la posicion "siguiente", ++iterador
-                int operator==(Iterador&);
-                Iterador& getUltimo();      //devuelve un iterador que apunta al ultimo elemento de la Lista
-        };
-
 };
 #endif

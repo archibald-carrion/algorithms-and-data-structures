@@ -195,33 +195,3 @@ int Lista::getSize(){
         return (*siguienteLista).getSize()+1;
     }
 }
-
-Lista::Iterador::Iterador(){
-    pointerLista = 0;
-}
-
-Lista::Iterador::Iterador(Lista* unaLista){
-    pointerLista = unaLista;
-}
-
-//devuelve la posicion "siguiente", ++iterador
-Lista::Iterador& Lista::Iterador::operator++(){
-    pointerLista = (*pointerLista).siguienteLista;
-    return *this;
-}     
-
-int Lista::Iterador::operator==(Iterador& otro){
-    if(*(otro.pointerLista) == *pointerLista){
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-Lista::Iterador& Lista::Iterador::getUltimo(){
-    while(!(*pointerLista==*((*pointerLista).siguienteLista))){
-        pointerLista = (*pointerLista).siguienteLista;
-    }
-    return *this;
-    //itera en la lista hastra llegar a un punto donde siguienteLista == this
-}
