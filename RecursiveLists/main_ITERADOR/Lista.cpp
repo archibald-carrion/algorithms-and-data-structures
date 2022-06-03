@@ -57,7 +57,6 @@ Lista& Lista::operator = (Lista& otra) {
     } else{
         Lista *nuevaLista = new Lista(*(otra.siguienteLista));
         siguienteLista = nuevaLista;
-        //siguienteLista = otra.siguienteLista;
         el_valor = otra.el_valor;
         su_frecuencia = otra.su_frecuencia;
     }
@@ -104,7 +103,7 @@ int Lista::get(int pos) {
                 valorFinal = (*(iterador.pointerLista)).el_valor;
                 encontrado=1;
             } else {
-                iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
+                ++iterador;
                 --pos;
             }
         }
@@ -126,7 +125,7 @@ int Lista::getFrecuencia(int pos) {
                 valorFinal = (*(iterador.pointerLista)).su_frecuencia;
                 encontrado=1;
             } else {
-                iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
+                ++iterador;
                 --pos;
             }
         }
@@ -216,7 +215,7 @@ int Lista::getSize(){
             encontrado= 1;
         } else {
             ++size;
-            iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
+            ++iterador;
         }
     }
     return size;
@@ -249,5 +248,4 @@ Lista::Iterador& Lista::Iterador::getUltimo(){
         pointerLista = (*pointerLista).siguienteLista;
     }
     return *this;
-    //itera en la lista hastra llegar a un punto donde siguienteLista == this
 }
