@@ -217,23 +217,9 @@ int Lista::getSize(){
         } else {
             ++size;
             iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
-            //if(pos==0) {
-            //    valorFinal = (*(iterador.pointerLista)).su_frecuencia;
-            //    encontrado=1;
-           // } else {
-           //     iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
-              //  --pos;
-           // }
         }
     }
     return size;
-    /*
-    int size;
-    if(*this==*siguienteLista){
-        return 1;
-    } else {
-        return (*siguienteLista).getSize()+1;
-    }*/
 }
 
 Lista::Iterador::Iterador(){
