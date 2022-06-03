@@ -26,6 +26,7 @@ int main(int args, char **argv){
     int sizeLista = lista.getSize();
     int counter = 0;
     Lista listaFrecuencia;
+    
     while(counter<sizeLista){
         listaFrecuencia.insertar(lista.getFrecuencia(counter));
         ++counter;

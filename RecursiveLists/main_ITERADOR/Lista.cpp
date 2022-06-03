@@ -7,6 +7,7 @@ Lista::Lista(){
     el_valor = 0;
     su_frecuencia = 0;
     siguienteLista = 0; //no hay que desreferenciar el puntero cuando le doy el valor nulo (0)
+    //iterador.pointerLista = this;
 }
 
 //metodo constructor por copia
@@ -90,6 +91,27 @@ int Lista::operator == (const Lista& otra){
 
 //metodo que devuelve el_valor de la lista en la posicion dada en los parametros
 int Lista::get(int pos) {
+    Iterador iterador(this);
+    int encontrado = 0;
+    int valorFinal = 0;
+    while(encontrado==0){
+        if(pos>0 && *(iterador.pointerLista)==*((*(iterador.pointerLista)).siguienteLista)){
+            //pointerLista = (*pointerLista).siguienteLista;
+            cerr<<"se intento acceder a un valor fuera del rango de la Lista";
+            valorFinal= 0;
+            encontrado= 1;
+        } else {
+            if(pos==0) {
+                valorFinal = el_valor;
+                encontrado=1;
+            } else {
+                iterador.pointerLista = (*iterador.pointerLista).siguienteLista;
+                --pos;
+            }
+        }
+    }
+    return valorFinal;
+    /*
     if(pos>0 && (*this == *siguienteLista)){
         cerr<<"se intento acceder a un valor fuera del rango de la Lista";
         return 0;
@@ -99,7 +121,8 @@ int Lista::get(int pos) {
         } else {
             return (*siguienteLista).get(pos-1);
         }
-    }
+    }*/
+
 }
 
 //metodo getFrecuencia que devuelve la frecuencia del elemento de la posicion dada
