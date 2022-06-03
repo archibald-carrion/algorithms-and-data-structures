@@ -96,7 +96,6 @@ int Lista::get(int pos) {
     int valorFinal = 0;
     while(encontrado==0){
         if(pos>0 && *(iterador.pointerLista)==*((*(iterador.pointerLista)).siguienteLista)){
-            //pointerLista = (*pointerLista).siguienteLista;
             cerr<<"se intento acceder a un valor fuera del rango de la Lista";
             valorFinal= 0;
             encontrado= 1;
@@ -111,18 +110,6 @@ int Lista::get(int pos) {
         }
     }
     return valorFinal;
-    /*
-    if(pos>0 && (*this == *siguienteLista)){
-        cerr<<"se intento acceder a un valor fuera del rango de la Lista";
-        return 0;
-    } else {
-        if(pos == 0){
-            return el_valor;
-        } else {
-            return (*siguienteLista).get(pos-1);
-        }
-    }*/
-
 }
 
 //metodo getFrecuencia que devuelve la frecuencia del elemento de la posicion dada
