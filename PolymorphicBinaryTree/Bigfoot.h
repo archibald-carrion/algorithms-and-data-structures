@@ -10,6 +10,13 @@ class Bigfoot: public Elemento{
     public:
         Bigfoot();
         ~Bigfoot();
+        //virtual ~Elemento(){};
+        Bigfoot *clonar();
+        ostream &imprimir(ostream &);
+        istream &leer(istream &);
+        int operator==(Elemento *);
+        int operator!=(Elemento *);
+        int operator<(Elemento *);
         
 };
 #endif
