@@ -1,14 +1,14 @@
 #include "Arbol.h"
 #include "Elemento.h"
 //#include "Letra.h"
-#include "Bigfoot.h"
+#include "Coordenadas.h"
 #include <iostream>
 using namespace std;
 int main(){
    Arbol arbol;
 //   Elemento * elemento = new Entero();
    //Elemento * elemento = new Bigfoot();
-   Elemento *elemento = new Bigfoot();
+   Elemento *elemento = new Coordenadas();
    
    for(int i=0;i < 10; ++i){
       cout << "Digite un elemento: " ;

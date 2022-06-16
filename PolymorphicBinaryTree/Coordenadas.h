@@ -1,17 +1,18 @@
-#ifndef BIGFOOT_CLASS
-#define BIGFOOT_CLASS
+#ifndef COORD_CLASS
+#define COORD_CLASS
 #include "Elemento.h"
 #include<iostream>
 using namespace std;
 
-class Bigfoot: public Elemento{
+class Coordenadas: public Elemento{
     protected:
         int cantidad;
     public:
-        Bigfoot();
-        ~Bigfoot();
+        Coordenadas();
+        ~Coordenadas();
         //virtual ~Elemento(){};
-        Bigfoot *clonar();
+
+        Elemento *clonar();
         ostream &imprimir(ostream &);
         istream &leer(istream &);
         int operator==(Elemento *);
