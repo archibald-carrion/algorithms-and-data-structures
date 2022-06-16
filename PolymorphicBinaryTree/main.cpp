@@ -6,8 +6,7 @@
 using namespace std;
 int main(){
    Arbol arbol;
-//   Elemento * elemento = new Entero();
-   //Elemento * elemento = new Bigfoot();
+   //Elemento * elemento = new Entero();
    Elemento *elemento = new Coordenadas();
    
    for(int i=0;i < 10; ++i){

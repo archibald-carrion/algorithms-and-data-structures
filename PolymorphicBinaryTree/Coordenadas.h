@@ -10,8 +10,6 @@ class Coordenadas: public Elemento{
     public:
         Coordenadas();
         ~Coordenadas();
-        //virtual ~Elemento(){};
-
         Elemento *clonar();
         ostream &imprimir(ostream &);
         istream &leer(istream &);
