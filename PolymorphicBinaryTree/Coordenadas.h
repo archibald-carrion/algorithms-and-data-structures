@@ -6,9 +6,11 @@ using namespace std;
 
 class Coordenadas: public Elemento{
     protected:
-        int cantidad;
+        int abscisa;
+        int ordenada;
     public:
         Coordenadas();
+        Coordenadas(int,int);
         ~Coordenadas();
         Elemento *clonar();
         ostream &imprimir(ostream &);
