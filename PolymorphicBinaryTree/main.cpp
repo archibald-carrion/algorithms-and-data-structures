@@ -11,9 +11,9 @@ int main(){
    
    for(int i=0;i < 10; ++i){
       cout << "Digite un elemento: " ;
-	  cin >> elemento;
-	  arbol.add(elemento);
-	  cout << endl;
+	   cin >> elemento;
+	   arbol.add(elemento);
+	   cout << endl;
    }
    cout << "ELEMENTOS"<<endl;
    cout << arbol;
