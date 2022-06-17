@@ -1,17 +1,16 @@
-#ifndef COORD_CLASS
-#define COORD_CLASS
+#ifndef USER_CLASS
+#define USER_CLASS
 #include "Elemento.h"
 #include<iostream>
 using namespace std;
 
-class Coordenadas: public Elemento{
+class User: public Elemento{
     protected:
-        int abscisa;
-        int ordenada;
+        char* nombreUser;
     public:
-        Coordenadas();
-        Coordenadas(int,int);
-        ~Coordenadas();
+        User();
+        User(char*);
+        ~User();
         Elemento *clonar();
         ostream &imprimir(ostream &);
         istream &leer(istream &);
