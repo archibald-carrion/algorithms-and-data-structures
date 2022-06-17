@@ -1,15 +1,15 @@
-#ifndef LETRA
-#define LETRA
+#ifndef _USER_
+#define _USER_
 #include "Elemento.h"
 #include<iostream>
 using namespace std;
 
-class Letra: public Elemento {
+class User: public Elemento {
    private:
-      char letra;
+      char* nombre;
    public:
-      Letra();
-	  Letra(char);
+      User();
+	   User(char*);
       Elemento * clonar();
       ostream& imprimir(ostream&);
       istream& leer(istream&);

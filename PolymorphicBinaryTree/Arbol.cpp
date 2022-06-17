@@ -21,15 +21,15 @@ Arbol::Nodo::~Nodo(){
 }
 
 ostream& Arbol::Nodo::imprimir(ostream& salida){ 
-  if(hijo[IZQ]){
-	  hijo[IZQ]->imprimir(salida);
-  }
-  salida << elemento << " ";
+  	if(hijo[IZQ]){
+	  	hijo[IZQ]->imprimir(salida);
+  	}
+  	salida << elemento << " ";
   
-  if(hijo[DER]){
-	  hijo[DER]->imprimir(salida);
-  }	
-
+  	if(hijo[DER]){
+	  	hijo[DER]->imprimir(salida);
+  	}	
+	return salida;
 }
 
 void Arbol::Nodo::add(Elemento * elemento){

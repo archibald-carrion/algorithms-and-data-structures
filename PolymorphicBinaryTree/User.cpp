@@ -1,39 +1,39 @@
 #include "Elemento.h"
-#include "Letra.h"
+#include "User.h"
 #include<iostream>
 using namespace std;
 
-Letra::Letra(){
-	letra = '_';
+User::User(){
+	nombre = 0;
 }
-Letra::Letra(char letra){
-	this->letra = letra;
-}
-
-Elemento * Letra::clonar(){
-	return new Letra(letra);
+User::User(char* nombreUser){
+	this->nombre = nombreUser;
 }
 
-ostream& Letra::imprimir(ostream& salida){
-	salida << letra << " ";
+Elemento * User::clonar(){
+	return new User(nombre);
+}
+
+ostream& User::imprimir(ostream& salida){
+	salida << nombre << " ";
 	return salida;
 }
 
-istream& Letra::leer(istream& entrada){
-	entrada >> letra;
+istream& User::leer(istream& entrada){
+	entrada >> nombre;
 	return entrada;
 }
 
-int Letra::operator==(Elemento * p){
-	Letra * pLetra = dynamic_cast<Letra *>(p);
-	return pLetra && letra==pLetra->letra;
+int User::operator==(Elemento * otro){
+	User * otroUser = dynamic_cast<User *>(otro);
+	return otroUser && nombre==otroUser->nombre;
 }
 
-int Letra::operator!=(Elemento * p){
-    return !((*this)==p);
+int User::operator!=(Elemento * otro){
+    return !((*this)==otro);
 }
 
-int Letra::operator<(Elemento * p){
-	Letra * pLetra = dynamic_cast<Letra *>(p);
-	return pLetra && this->letra < pLetra->letra;		  		  
+int User::operator<(Elemento * otro){
+	User * otroUser = dynamic_cast<User *>(otro);
+	return otroUser && this->nombre < otroUser->nombre;		  		  
 }

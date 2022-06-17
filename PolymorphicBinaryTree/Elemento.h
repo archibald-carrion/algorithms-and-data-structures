@@ -15,11 +15,11 @@ class Elemento {
    public:
       virtual ~Elemento(){};
       virtual Elemento * clonar()=0;
-	  virtual ostream& imprimir(ostream&)=0;
+	   virtual ostream& imprimir(ostream&)=0;
       virtual istream& leer(istream&)=0;
-	  virtual int operator==(Elemento *)=0;
-	  virtual int operator!=(Elemento *)=0;
-	  virtual int operator<(Elemento *)=0;
+	   virtual int operator==(Elemento *)=0;
+	   virtual int operator!=(Elemento *)=0;
+	   virtual int operator<(Elemento *)=0;
 
 };
 
