@@ -4,29 +4,29 @@
 using namespace std;
 
 User::User(){
-	nombre = 0;
+	id = 0;
 }
-User::User(char* nombreUser){
-	this->nombre = nombreUser;
+User::User(unsigned long int idUser){
+	this->id = idUser;
 }
 
 Elemento * User::clonar(){
-	return new User(nombre);
+	return new User(id);
 }
 
 ostream& User::imprimir(ostream& salida){
-	salida << nombre << " ";
+	salida << id << " ";
 	return salida;
 }
 
 istream& User::leer(istream& entrada){
-	entrada >> nombre;
+	entrada >> id;
 	return entrada;
 }
 
 int User::operator==(Elemento * otro){
 	User * otroUser = dynamic_cast<User *>(otro);
-	return otroUser && nombre==otroUser->nombre;
+	return otroUser && id==otroUser->id;
 }
 
 int User::operator!=(Elemento * otro){
@@ -35,5 +35,5 @@ int User::operator!=(Elemento * otro){
 
 int User::operator<(Elemento * otro){
 	User * otroUser = dynamic_cast<User *>(otro);
-	return otroUser && this->nombre < otroUser->nombre;		  		  
+	return otroUser && this->id < otroUser->id;		  		  
 }

@@ -93,4 +93,5 @@ int Arbol::existe(Elemento * elemento){
 	if(raiz){
 		existeElemento = raiz->existe(elemento);
 	}
+	return existeElemento;
 }
