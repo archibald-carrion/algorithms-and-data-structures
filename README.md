@@ -3,6 +3,6 @@
 - [x] Recursive list
 - [ ] Common linked list
 - [ ] Doubly linked list
-- [ ] Polymorphic binary tree
+- [x] Polymorphic binary tree
 
 ## Content of the project
