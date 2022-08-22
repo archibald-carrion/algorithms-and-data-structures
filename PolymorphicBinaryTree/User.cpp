@@ -7,6 +7,7 @@ User::User()
 {
 	id = 0;
 }
+
 User::User(unsigned long int idUser)
 {
 	this->id = idUser;
