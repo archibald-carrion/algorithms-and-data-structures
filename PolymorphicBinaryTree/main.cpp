@@ -15,17 +15,20 @@ int main()
       tree.add(element);
       cout << endl;
    }
+   
    cout << "ELEMENTS" << endl;
    cout << tree;
    cout << endl;
-   do
+
+   while (tree.exist(element))
    {
       cout << "Digit an existing element: ";
       cin >> element;
       cout << endl;
-   } while (tree.exist(element));
+   }
+
    cout << "This value: " << element << " does not exist" << endl;
    return 0;
 }
 
-//    g++ main.cpp User.cpp Tree.cpp
+// on linux:  g++ *.cpp
