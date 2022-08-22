@@ -5,37 +5,37 @@
 Tree::Node::Node(Element *element)
 {
 	this->element = element->clone();
-	hijo[IZQ] = 0;
-	hijo[DER] = 0;
+	children[LEFT] = 0;
+	children[RIGHT] = 0;
 }
 
 Tree::Node::~Node()
 {
-	if (hijo[IZQ])
+	if (children[LEFT])
 	{
-		delete hijo[IZQ];
+		delete children[LEFT];
 	}
 	if (element)
 	{
 		delete element;
 	}
-	if (hijo[DER])
+	if (children[RIGHT])
 	{
-		delete hijo[DER];
+		delete children[RIGHT];
 	}
 }
 
 ostream &Tree::Node::print(ostream &salida)
 {
-	if (hijo[IZQ])
+	if (children[LEFT])
 	{
-		hijo[IZQ]->print(salida);
+		children[LEFT]->print(salida);
 	}
 	salida << element << " ";
 
-	if (hijo[DER])
+	if (children[RIGHT])
 	{
-		hijo[DER]->print(salida);
+		children[RIGHT]->print(salida);
 	}
 	return salida;
 }
@@ -44,14 +44,14 @@ void Tree::Node::add(Element *element)
 {
 	if (*(this->element) != element)
 	{
-		int lado = (*element < this->element) ? IZQ : DER;
-		if (hijo[lado])
+		int lado = (*element < this->element) ? LEFT : RIGHT;
+		if (children[lado])
 		{
-			hijo[lado]->add(element);
+			children[lado]->add(element);
 		}
 		else
 		{
-			hijo[lado] = new Node(element);
+			children[lado] = new Node(element);
 		}
 	}
 }
@@ -65,10 +65,10 @@ int Tree::Node::exist(Element *element)
 	}
 	else
 	{
-		int lado = (*element < this->element) ? IZQ : DER;
-		if (hijo[lado])
+		int lado = (*element < this->element) ? LEFT : RIGHT;
+		if (children[lado])
 		{
-			existElement = hijo[lado]->exist(element);
+			existElement = children[lado]->exist(element);
 		}
 	}
 	return existElement;
@@ -82,7 +82,7 @@ ostream &Tree::print(ostream &output)
 	}
 	else
 	{
-		output << "Tree VACIO" << endl;
+		output << "Empty tree" << endl;
 	}
 	return output;
 }

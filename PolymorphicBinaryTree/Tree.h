@@ -1,8 +1,8 @@
 #ifndef BINARY_TREE_
 #define BINARY_TREE_
-#define IZQ 0
-#define DER 1
-#define HIJOS 2
+#define LEFT 0
+#define RIGHT 1
+#define CHILDRE 2
 #include <iostream>
 #include "Element.h"
 using namespace std;
@@ -18,7 +18,7 @@ private:
 	{
 	public:
 		Element *element;
-		Node *hijo[HIJOS];
+		Node *children[];
 		Node(Element *);
 		~Node();
 		ostream &print(ostream &);

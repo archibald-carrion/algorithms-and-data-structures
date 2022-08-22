@@ -10,7 +10,7 @@ int main()
 
    for (int i = 0; i < 10; ++i)
    {
-      cout << "Digite un element: ";
+      cout << "Digit a new element: ";
       cin >> element;
       tree.add(element);
       cout << endl;
@@ -20,12 +20,12 @@ int main()
    cout << endl;
    do
    {
-      cout << "Digite elemento existente: ";
+      cout << "Digit an existing element: ";
       cin >> element;
       cout << endl;
    } while (tree.exist(element));
-   cout << "Ese valor " << element << " no existe " << endl;
+   cout << "This value: " << element << " does not exist" << endl;
    return 0;
 }
 
-//    g++ main.cpp User.cpp tree.cpp
+//    g++ main.cpp User.cpp Tree.cpp
