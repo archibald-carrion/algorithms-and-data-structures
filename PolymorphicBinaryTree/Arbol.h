@@ -4,7 +4,7 @@
 #define DER 1
 #define HIJOS 2
 #include <iostream>
-#include "Elemento.h"
+#include "Element.h"
 using namespace std;
 class Arbol
 {
@@ -17,13 +17,13 @@ private:
 	class Nodo
 	{
 	public:
-		Elemento *elemento;
+		Element *element;
 		Nodo *hijo[HIJOS];
-		Nodo(Elemento *);
+		Nodo(Element *);
 		~Nodo();
 		ostream &imprimir(ostream &);
-		void add(Elemento *);
-		int existe(Elemento *);
+		void add(Element *);
+		int existe(Element *);
 	};
 
 	Nodo *raiz;
@@ -32,7 +32,7 @@ private:
 public:
 	Arbol();
 	~Arbol();
-	void add(Elemento *);
-	int existe(Elemento *);
+	void add(Element *);
+	int existe(Element *);
 };
 #endif

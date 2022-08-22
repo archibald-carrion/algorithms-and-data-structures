@@ -1,5 +1,5 @@
 #include "Arbol.h"
-#include "Elemento.h"
+#include "Element.h"
 //#include "Letra.h"
 #include "User.h"
 #include <iostream>
@@ -9,25 +9,25 @@ int main()
    Arbol arbol;
    // Elemento * elemento = new Entero();
    // Elemento * elemento = new Letra();
-   Elemento *elemento = new User();
+   Element *element = new User();
 
    for (int i = 0; i < 10; ++i)
    {
-      cout << "Digite un elemento: ";
-      cin >> elemento;
-      arbol.add(elemento);
+      cout << "Digite un element: ";
+      cin >> element;
+      arbol.add(element);
       cout << endl;
    }
-   cout << "ELEMENTOS" << endl;
+   cout << "ELEMENTS" << endl;
    cout << arbol;
    cout << endl;
    do
    {
       cout << "Digite elemento existente: ";
-      cin >> elemento;
+      cin >> element;
       cout << endl;
-   } while (arbol.existe(elemento));
-   cout << "Ese valor " << elemento << " no existe " << endl;
+   } while (arbol.existe(element));
+   cout << "Ese valor " << element << " no existe " << endl;
    return 0;
 }
 
