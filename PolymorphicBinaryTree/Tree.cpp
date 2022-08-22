@@ -1,15 +1,15 @@
-#include "Arbol.h"
+#include "Tree.h"
 #include "Element.h"
 #include <iostream>
 
-Arbol::Node::Node(Element *element)
+Tree::Node::Node(Element *element)
 {
 	this->element = element->clone();
 	hijo[IZQ] = 0;
 	hijo[DER] = 0;
 }
 
-Arbol::Node::~Node()
+Tree::Node::~Node()
 {
 	if (hijo[IZQ])
 	{
@@ -25,7 +25,7 @@ Arbol::Node::~Node()
 	}
 }
 
-ostream &Arbol::Node::print(ostream &salida)
+ostream &Tree::Node::print(ostream &salida)
 {
 	if (hijo[IZQ])
 	{
@@ -40,7 +40,7 @@ ostream &Arbol::Node::print(ostream &salida)
 	return salida;
 }
 
-void Arbol::Node::add(Element *element)
+void Tree::Node::add(Element *element)
 {
 	if (*(this->element) != element)
 	{
@@ -56,7 +56,7 @@ void Arbol::Node::add(Element *element)
 	}
 }
 
-int Arbol::Node::exist(Element *element)
+int Tree::Node::exist(Element *element)
 {
 	int existElement = 0;
 	if (*(this->element) == element)
@@ -74,7 +74,7 @@ int Arbol::Node::exist(Element *element)
 	return existElement;
 }
 
-ostream &Arbol::print(ostream &output)
+ostream &Tree::print(ostream &output)
 {
 	if (root)
 	{
@@ -82,17 +82,17 @@ ostream &Arbol::print(ostream &output)
 	}
 	else
 	{
-		output << "ARBOL VACIO" << endl;
+		output << "Tree VACIO" << endl;
 	}
 	return output;
 }
 
-Arbol::Arbol()
+Tree::Tree()
 {
 	root = 0;
 }
 
-Arbol::~Arbol()
+Tree::~Tree()
 {
 	if (root)
 	{
@@ -100,7 +100,7 @@ Arbol::~Arbol()
 	}
 }
 
-void Arbol::add(Element *element)
+void Tree::add(Element *element)
 {
 	if (root)
 	{
@@ -112,7 +112,7 @@ void Arbol::add(Element *element)
 	}
 }
 
-int Arbol::exist(Element *element)
+int Tree::exist(Element *element)
 {
 	int existElement = 0;
 	if (root)

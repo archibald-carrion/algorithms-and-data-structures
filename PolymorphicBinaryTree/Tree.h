@@ -1,16 +1,16 @@
-#ifndef ARBOLBIN
-#define ARBOLBIN
+#ifndef BINARY_TREE_
+#define BINARY_TREE_
 #define IZQ 0
 #define DER 1
 #define HIJOS 2
 #include <iostream>
 #include "Element.h"
 using namespace std;
-class Arbol
+class Tree
 {
-	friend ostream &operator<<(ostream &output, Arbol &arbol)
+	friend ostream &operator<<(ostream &output, Tree &tree)
 	{
-		return arbol.print(output);
+		return tree.print(output);
 	}
 
 private:
@@ -30,8 +30,8 @@ private:
 	ostream &print(ostream &);
 
 public:
-	Arbol();
-	~Arbol();
+	Tree();
+	~Tree();
 	void add(Element *);
 	int exist(Element *);
 };
