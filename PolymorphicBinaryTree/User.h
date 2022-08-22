@@ -11,9 +11,9 @@ private:
 public:
    User();
    User(unsigned long int);
-   Element *clonar();
-   ostream &imprimir(ostream &);
-   istream &leer(istream &);
+   Element *clone();
+   ostream &print(ostream &);
+   istream &read(istream &);
    int operator==(Element *);
    int operator!=(Element *);
    int operator<(Element *);

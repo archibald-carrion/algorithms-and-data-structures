@@ -12,36 +12,36 @@ User::User(unsigned long int idUser)
 	this->id = idUser;
 }
 
-Element *User::clonar()
+Element *User::clone()
 {
 	return new User(id);
 }
 
-ostream &User::imprimir(ostream &salida)
+ostream &User::print(ostream &output)
 {
-	salida << id << " ";
-	return salida;
+	output << id << " ";
+	return output;
 }
 
-istream &User::leer(istream &entrada)
+istream &User::read(istream &input)
 {
-	entrada >> id;
-	return entrada;
+	input >> id;
+	return input;
 }
 
-int User::operator==(Element *otro)
+int User::operator==(Element *other)
 {
-	User *otroUser = dynamic_cast<User *>(otro);
-	return otroUser && id == otroUser->id;
+	User *otherUser = dynamic_cast<User *>(other);
+	return otherUser && id == otherUser->id;
 }
 
-int User::operator!=(Element *otro)
+int User::operator!=(Element *other)
 {
-	return !((*this) == otro);
+	return !((*this) == other);
 }
 
-int User::operator<(Element *otro)
+int User::operator<(Element *other)
 {
-	User *otroUser = dynamic_cast<User *>(otro);
-	return otroUser && this->id < otroUser->id;
+	User *otherUser = dynamic_cast<User *>(other);
+	return otherUser && this->id < otherUser->id;
 }
