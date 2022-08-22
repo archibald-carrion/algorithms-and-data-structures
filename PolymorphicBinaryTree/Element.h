@@ -10,14 +10,14 @@ class Element
       return p->print(salida);
    }
 
-   friend istream &operator>>(istream &entrada, Element *p)
+   friend istream &operator>>(istream &input, Element *p)
    {
-      return p->read(entrada);
+      return p->read(input);
    }
 
 public:
    virtual ~Element(){};
-   virtual Element *clonar() = 0;
+   virtual Element *clone() = 0;
    virtual ostream &print(ostream &) = 0;
    virtual istream &read(istream &) = 0;
    virtual int operator==(Element *) = 0;

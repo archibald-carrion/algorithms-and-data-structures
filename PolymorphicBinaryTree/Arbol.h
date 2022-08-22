@@ -8,31 +8,31 @@
 using namespace std;
 class Arbol
 {
-	friend ostream &operator<<(ostream &salida, Arbol &arbol)
+	friend ostream &operator<<(ostream &output, Arbol &arbol)
 	{
-		return arbol.imprimir(salida);
+		return arbol.print(output);
 	}
 
 private:
-	class Nodo
+	class Node
 	{
 	public:
 		Element *element;
-		Nodo *hijo[HIJOS];
-		Nodo(Element *);
-		~Nodo();
-		ostream &imprimir(ostream &);
+		Node *hijo[HIJOS];
+		Node(Element *);
+		~Node();
+		ostream &print(ostream &);
 		void add(Element *);
-		int existe(Element *);
+		int exist(Element *);
 	};
 
-	Nodo *raiz;
-	ostream &imprimir(ostream &);
+	Node *root;
+	ostream &print(ostream &);
 
 public:
 	Arbol();
 	~Arbol();
 	void add(Element *);
-	int existe(Element *);
+	int exist(Element *);
 };
 #endif

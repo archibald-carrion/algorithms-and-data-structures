@@ -26,7 +26,7 @@ int main()
       cout << "Digite elemento existente: ";
       cin >> element;
       cout << endl;
-   } while (arbol.existe(element));
+   } while (arbol.exist(element));
    cout << "Ese valor " << element << " no existe " << endl;
    return 0;
 }

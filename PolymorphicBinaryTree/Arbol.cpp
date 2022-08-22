@@ -2,14 +2,14 @@
 #include "Element.h"
 #include <iostream>
 
-Arbol::Nodo::Nodo(Element *element)
+Arbol::Node::Node(Element *element)
 {
-	this->element = element->clonar();
+	this->element = element->clone();
 	hijo[IZQ] = 0;
 	hijo[DER] = 0;
 }
 
-Arbol::Nodo::~Nodo()
+Arbol::Node::~Node()
 {
 	if (hijo[IZQ])
 	{
@@ -25,22 +25,22 @@ Arbol::Nodo::~Nodo()
 	}
 }
 
-ostream &Arbol::Nodo::imprimir(ostream &salida)
+ostream &Arbol::Node::print(ostream &salida)
 {
 	if (hijo[IZQ])
 	{
-		hijo[IZQ]->imprimir(salida);
+		hijo[IZQ]->print(salida);
 	}
 	salida << element << " ";
 
 	if (hijo[DER])
 	{
-		hijo[DER]->imprimir(salida);
+		hijo[DER]->print(salida);
 	}
 	return salida;
 }
 
-void Arbol::Nodo::add(Element *element)
+void Arbol::Node::add(Element *element)
 {
 	if (*(this->element) != element)
 	{
@@ -51,73 +51,73 @@ void Arbol::Nodo::add(Element *element)
 		}
 		else
 		{
-			hijo[lado] = new Nodo(element);
+			hijo[lado] = new Node(element);
 		}
 	}
 }
 
-int Arbol::Nodo::existe(Element *element)
+int Arbol::Node::exist(Element *element)
 {
-	int existeElement = 0;
+	int existElement = 0;
 	if (*(this->element) == element)
 	{
-		existeElement = 1;
+		existElement = 1;
 	}
 	else
 	{
 		int lado = (*element < this->element) ? IZQ : DER;
 		if (hijo[lado])
 		{
-			existeElement = hijo[lado]->existe(element);
+			existElement = hijo[lado]->exist(element);
 		}
 	}
-	return existeElement;
+	return existElement;
 }
 
-ostream &Arbol::imprimir(ostream &salida)
+ostream &Arbol::print(ostream &output)
 {
-	if (raiz)
+	if (root)
 	{
-		raiz->imprimir(salida);
+		root->print(output);
 	}
 	else
 	{
-		salida << "ARBOL VACIO" << endl;
+		output << "ARBOL VACIO" << endl;
 	}
-	return salida;
+	return output;
 }
 
 Arbol::Arbol()
 {
-	raiz = 0;
+	root = 0;
 }
 
 Arbol::~Arbol()
 {
-	if (raiz)
+	if (root)
 	{
-		delete raiz;
+		delete root;
 	}
 }
 
 void Arbol::add(Element *element)
 {
-	if (raiz)
+	if (root)
 	{
-		raiz->add(element);
+		root->add(element);
 	}
 	else
 	{
-		raiz = new Nodo(element);
+		root = new Node(element);
 	}
 }
 
-int Arbol::existe(Element *element)
+int Arbol::exist(Element *element)
 {
-	int existeElemento = 0;
-	if (raiz)
+	int existElement = 0;
+	if (root)
 	{
-		existeElement = raiz->existe(element);
+		existElement = root->exist(element);
 	}
-	return existeElement;
+	return existElement;
 }
