@@ -21,15 +21,52 @@ void bubblesort(deque<int> &deck)
 	}
 }
 
-void quicksort(deque<int> deck)
+int partition(deque<int> &deck, int low, int high){
+
+	int pivot = deck[low];
+ 
+    int count = 0;
+    for (int i = low + 1; i <= high; i++) {
+        if (deck[i] <= pivot)
+            count++;
+    }
+ 
+    int pivotIndex = low + count;
+    swap(deck[pivotIndex], deck[low]);
+    int i = low, j = high;
+ 
+    while (i < pivotIndex && j > pivotIndex) {
+ 
+        while (deck[i] <= pivot) {
+            i++;
+        }
+ 
+        while (deck[j] > pivot) {
+            j--;
+        }
+ 
+        if (i < pivotIndex && j > pivotIndex) {
+            swap(deck[i++], deck[j--]);
+        }
+    }
+ 
+    return pivotIndex;
+}
+
+void quicksort(deque<int> &deck, int low, int high)
 {
+	if(low<high){
+		int pivot_location = partition(deck, low, high);
+		quicksort(deck, low, pivot_location-1);
+		quicksort(deck, pivot_location+1, high);
+	}
 }
 
 deque<int> merge(deque<int> deckA, deque<int> deckB)
 {
 	deque<int> deckC;
 
-	while (!deckA.empty() || !deckB.empty())
+	while (!deckA.empty() && !deckB.empty())
 	{
 		if (deckA[0] > deckB[0])
 		{
@@ -42,6 +79,7 @@ deque<int> merge(deque<int> deckA, deque<int> deckB)
 			deckA.pop_front();
 		}
 	}
+
 	while (!deckA.empty())
 	{
 		deckC.push_back(deckA[0]);
@@ -62,27 +100,27 @@ deque<int> mergesort(deque<int> deck)
 	unsigned int n = deck.size();
 	if (n == 1){
 		return deck;
-	} else
-	{
-		cout<<"a"<<endl;
+	} //else
+	//{
+		//cout<<"a"<<endl;
 		deque<int> deckA;
 		deque<int> deckB;
 
 		for (unsigned int i = 0; i < n / 2; ++i)
 		{
-			cout<<"b"<<endl;
+			//cout<<deck[i]<<endl;
 			deckA.push_front(deck[i]);
 		}
 		for (unsigned int i = n / 2; i < n; ++i)
 		{
-			cout<<"c"<<endl;
+			//cout<<deck[i]<<endl;
 			deckB.push_front(deck[i]);
 		}
-		cout<<"d"<<endl;
-		mergesort(deckA);
-		mergesort(deckB);
+		//cout<<"d"<<endl;
+		deckA = mergesort(deckA);
+		deckB = mergesort(deckB);
 		return merge(deckA, deckB);
-	}
+	//}
 }
 
 int main()
@@ -103,7 +141,8 @@ int main()
 	}
 
 	//bubblesort(deck);
-	mergesort(deck);
+	//deck = mergesort(deck);
+	quicksort(deck, 0, deck.size()-1);
 
 	cout << "\n#####################################\n"
 		 << endl;
