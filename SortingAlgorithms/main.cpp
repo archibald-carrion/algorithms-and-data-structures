@@ -22,7 +22,7 @@ void bubblesort(deque<int> &deck)
 }
 
 int partition(deque<int> &deck, int low, int high){
-
+	//deck is given by reference, that way we can directly modify the array
 	int pivot = deck[low];
  
     int count = 0;
