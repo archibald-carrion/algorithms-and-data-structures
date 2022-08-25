@@ -21,6 +21,9 @@ void bubblesort(deque<int> &deck)
 	}
 }
 
+/*
+partition is a function used by the quicksort algorithm
+*/
 int partition(deque<int> &deck, int low, int high){
 	//deck is given by reference, that way we can directly modify the array
 	int pivot = deck[low];
@@ -53,6 +56,10 @@ int partition(deque<int> &deck, int low, int high){
     return pivotIndex;
 }
 
+/*
+quicksort function, a recursive function that use the partition function to correctly sort a given array
+it's a divide and conquer algorithm
+*/
 void quicksort(deque<int> &deck, int low, int high)
 {
 	if(low<high){
