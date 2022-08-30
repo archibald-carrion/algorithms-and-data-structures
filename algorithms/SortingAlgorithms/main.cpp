@@ -24,36 +24,42 @@ void bubblesort(deque<int> &deck)
 /*
 partition is a function used by the quicksort algorithm
 */
-int partition(deque<int> &deck, int low, int high){
-	//deck is given by reference, that way we can directly modify the array
+int partition(deque<int> &deck, int low, int high)
+{
+	// deck is given by reference, that way we can directly modify the array
 	int pivot = deck[low];
- 
-    int count = 0;
-    for (int i = low + 1; i <= high; i++) {
-        if (deck[i] <= pivot)
-            count++;
-    }
- 
-    int pivotIndex = low + count;
-    swap(deck[pivotIndex], deck[low]);
-    int i = low, j = high;
- 
-    while (i < pivotIndex && j > pivotIndex) {
- 
-        while (deck[i] <= pivot) {
-            i++;
-        }
- 
-        while (deck[j] > pivot) {
-            j--;
-        }
- 
-        if (i < pivotIndex && j > pivotIndex) {
-            swap(deck[i++], deck[j--]);
-        }
-    }
- 
-    return pivotIndex;
+
+	int count = 0;
+	for (int i = low + 1; i <= high; i++)
+	{
+		if (deck[i] <= pivot)
+			count++;
+	}
+
+	int pivotIndex = low + count;
+	swap(deck[pivotIndex], deck[low]);
+	int i = low, j = high;
+
+	while (i < pivotIndex && j > pivotIndex)
+	{
+
+		while (deck[i] <= pivot)
+		{
+			i++;
+		}
+
+		while (deck[j] > pivot)
+		{
+			j--;
+		}
+
+		if (i < pivotIndex && j > pivotIndex)
+		{
+			swap(deck[i++], deck[j--]);
+		}
+	}
+
+	return pivotIndex;
 }
 
 /*
@@ -62,10 +68,11 @@ it's a divide and conquer algorithm
 */
 void quicksort(deque<int> &deck, int low, int high)
 {
-	if(low<high){
+	if (low < high)
+	{
 		int pivot_location = partition(deck, low, high);
-		quicksort(deck, low, pivot_location-1);
-		quicksort(deck, pivot_location+1, high);
+		quicksort(deck, low, pivot_location - 1);
+		quicksort(deck, pivot_location + 1, high);
 	}
 }
 
@@ -105,64 +112,73 @@ deque<int> merge(deque<int> deckA, deque<int> deckB)
 deque<int> mergesort(deque<int> deck)
 {
 	unsigned int n = deck.size();
-	if (n == 1){
+	if (n == 1)
+	{
 		return deck;
-	} //else
+	} // else
 	//{
-		//cout<<"a"<<endl;
+	// cout<<"a"<<endl;
 	deque<int> deckA;
 	deque<int> deckB;
 
 	for (unsigned int i = 0; i < n / 2; ++i)
 	{
-		//cout<<deck[i]<<endl;
+		// cout<<deck[i]<<endl;
 		deckA.push_front(deck[i]);
 	}
 	for (unsigned int i = n / 2; i < n; ++i)
 	{
-		//cout<<deck[i]<<endl;
+		// cout<<deck[i]<<endl;
 		deckB.push_front(deck[i]);
 	}
-	//cout<<"d"<<endl;
+	// cout<<"d"<<endl;
 	deckA = mergesort(deckA);
 	deckB = mergesort(deckB);
 	return merge(deckA, deckB);
 	//}
 }
 
-void selectionSort(deque<int> &deck){
+void selectionSort(deque<int> &deck)
+{
 	int deckSize = deck.size();
-	for(int i = 0; i < deckSize-1 ; ++i){
+	for (int i = 0; i < deckSize - 1; ++i)
+	{
 		int minimum = i;
-		for(int j = i + 1 ; j < deckSize ; ++j){
-            if(deck[j] < deck[minimum]){
-                  minimum = j;
-            }
+		for (int j = i + 1; j < deckSize; ++j)
+		{
+			if (deck[j] < deck[minimum])
+			{
+				minimum = j;
+			}
 		}
-		//switch between both values
-		int buffer = deck[i];		
+		// switch between both values
+		int buffer = deck[i];
 		deck[i] = deck[minimum];
 		deck[minimum] = buffer;
-		//intercambiar(lista , i , minimo);
+		// intercambiar(lista , i , minimo);
 	}
 }
 
-void selectionSortRecursive(deque<int> &deck, int index){
+void selectionSortRecursive(deque<int> &deck, int index)
+{
 	int deckSize = deck.size();
 	int minimum = index;
-	for(int j = index+1; j<deckSize; ++j){  
-		if(deck[j]<deck[minimum]){
-			minimum = j;	
+	for (int j = index + 1; j < deckSize; ++j)
+	{
+		if (deck[j] < deck[minimum])
+		{
+			minimum = j;
 		}
 	}
-		
-	//switch between both values
-	int buffer = deck[index];		
+
+	// switch between both values
+	int buffer = deck[index];
 	deck[index] = deck[minimum];
 	deck[minimum] = buffer;
-	
-	if ( index+1 < deckSize){
-		selectionSortRecursive(deck, index+1);
+
+	if (index + 1 < deckSize)
+	{
+		selectionSortRecursive(deck, index + 1);
 	}
 }
 
@@ -183,10 +199,10 @@ int main()
 		cout << *i << endl;
 	}
 
-	//bubblesort(deck);
-	//deck = mergesort(deck);
-	//quicksort(deck, 0, deck.size()-1);
-	//selectionSort(deck);
+	// bubblesort(deck);
+	// deck = mergesort(deck);
+	// quicksort(deck, 0, deck.size()-1);
+	// selectionSort(deck);
 	selectionSortRecursive(deck, 0);
 
 	cout << "\n#####################################\n"
