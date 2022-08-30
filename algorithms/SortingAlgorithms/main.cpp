@@ -157,8 +157,8 @@ void selectionSortRecursive(deque<int> &deck, int index){
 	}
 		
 	//switch between both values
-	int buffer = deck[i];		
-	deck[i] = deck[minimum];
+	int buffer = deck[index];		
+	deck[index] = deck[minimum];
 	deck[minimum] = buffer;
 	
 	if ( index+1 < deckSize){
@@ -187,7 +187,7 @@ int main()
 	//deck = mergesort(deck);
 	//quicksort(deck, 0, deck.size()-1);
 	//selectionSort(deck);
-	selectionSortRecursive(deck);
+	selectionSortRecursive(deck, 0);
 
 	cout << "\n#####################################\n"
 		 << endl;
