@@ -110,24 +110,41 @@ deque<int> mergesort(deque<int> deck)
 	} //else
 	//{
 		//cout<<"a"<<endl;
-		deque<int> deckA;
-		deque<int> deckB;
+	deque<int> deckA;
+	deque<int> deckB;
 
-		for (unsigned int i = 0; i < n / 2; ++i)
-		{
-			//cout<<deck[i]<<endl;
-			deckA.push_front(deck[i]);
-		}
-		for (unsigned int i = n / 2; i < n; ++i)
-		{
-			//cout<<deck[i]<<endl;
-			deckB.push_front(deck[i]);
-		}
-		//cout<<"d"<<endl;
-		deckA = mergesort(deckA);
-		deckB = mergesort(deckB);
-		return merge(deckA, deckB);
+	for (unsigned int i = 0; i < n / 2; ++i)
+	{
+		//cout<<deck[i]<<endl;
+		deckA.push_front(deck[i]);
+	}
+	for (unsigned int i = n / 2; i < n; ++i)
+	{
+		//cout<<deck[i]<<endl;
+		deckB.push_front(deck[i]);
+	}
+	//cout<<"d"<<endl;
+	deckA = mergesort(deckA);
+	deckB = mergesort(deckB);
+	return merge(deckA, deckB);
 	//}
+}
+
+void selectionSort(deque<int> &deck){
+	int deckSize = deck.size();
+	for(int i = 0; i < deckSize-1 ; i++){
+		int minimum = i;
+		for(int j = i + 1 ; j < deckSize ; j++){
+            if(deck[j] < deck[minimum]){
+                  minimum = j;
+            }
+		}
+		//switch between both values
+		int buffer = deck[i];		
+		deck[i] = deck[minimum];
+		deck[minimum] = buffer;
+		//intercambiar(lista , i , minimo);
+	}
 }
 
 int main()
@@ -149,7 +166,8 @@ int main()
 
 	//bubblesort(deck);
 	//deck = mergesort(deck);
-	quicksort(deck, 0, deck.size()-1);
+	//quicksort(deck, 0, deck.size()-1);
+	selectionSort(deck);
 
 	cout << "\n#####################################\n"
 		 << endl;
