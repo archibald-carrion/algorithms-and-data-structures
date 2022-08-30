@@ -132,9 +132,9 @@ deque<int> mergesort(deque<int> deck)
 
 void selectionSort(deque<int> &deck){
 	int deckSize = deck.size();
-	for(int i = 0; i < deckSize-1 ; i++){
+	for(int i = 0; i < deckSize-1 ; ++i){
 		int minimum = i;
-		for(int j = i + 1 ; j < deckSize ; j++){
+		for(int j = i + 1 ; j < deckSize ; ++j){
             if(deck[j] < deck[minimum]){
                   minimum = j;
             }
