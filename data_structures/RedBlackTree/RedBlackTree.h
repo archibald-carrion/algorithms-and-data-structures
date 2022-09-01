@@ -1,11 +1,11 @@
-#ifndef _ARBOLROJONEGRO_
-#define _ARBOLROJONEGRO_
+#ifndef _REDBLACKTREE_
+#define _REDBLACKTREE_
 
 #include <iostream> // Para imprimir los mensajes de debugging
 
 template <class K, class V> //K es llave, V es valor
 
-class ArbolRojoNegro
+class RedBlackTree
 {
     private:
 
