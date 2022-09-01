@@ -3,7 +3,7 @@
 - [x] Recursive list
 - [ ] Linked list
 - [x] Polymorphic binary tree
-- [ ] Generic binary tree using Templates
+- [ ] Generic binary tree using templates
 - [x] Towers of Hanoi solver
 - [x] Bubble-sort algorithm
 - [x] Quick-sort algorithm
