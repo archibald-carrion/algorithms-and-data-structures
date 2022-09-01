@@ -1,4 +1,4 @@
-# Common data-structure for beginner in C++
+# Common data-structure and algorithm in C/C++
 ## To-do list
 - [x] Recursive list
 - [ ] Common linked list
@@ -7,3 +7,4 @@
 - [ ] Generic binary tree using Templates
 
 ## Content of the project
+The project contain two main folders, the data-structure folder and the algorithm folder, each one have multiples sub-folders to divide each sub-projects
