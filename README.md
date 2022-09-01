@@ -9,6 +9,7 @@
 - [x] Quick-sort algorithm
 - [x] Merge-sort algorithm
 - [x] Selection-sort algorithm
+- [ ] Red-black tree
 
 ## Content of the project
 The project contain two main folders, the data-structure folder and the algorithm folder, each one have multiples sub-folders to divide each sub-projects
